@@ -1,0 +1,95 @@
+/* .docx-wrapper {
+  background: #fff;
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  max-height: 600px;
+  overflow-y: auto;
+}
+
+.docx-wrapper p {
+  margin: 4px 0;
+  line-height: 1.4;
+}
+
+.similar-text {
+  background-color: lightgreen;
+  font-weight: bold;
+  padding: 1px 2px;
+  border-radius: 3px;
+} */
+
+button {
+  background-color: #4CAF50;   /* green background */
+  color: white;                /* white text */
+  padding: 10px 20px;          /* spacing */
+  border: none;                /* remove border */
+  border-radius: 8px;          /* rounded corners */
+  cursor: pointer;             /* pointer cursor */
+  font-size: 16px;             /* readable font */
+  font-weight: bold;           /* bold text */
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+button:hover {
+  background-color: #45a049;   /* darker green on hover */
+  transform: scale(1.05);      /* slight zoom effect */
+}
+
+button:active {
+  background-color: #3e8e41;   /* even darker when clicked */
+  transform: scale(0.98);      /* pressed effect */
+}
+
+.app-container {
+  padding: 20px;
+  text-align: center;
+}
+
+.compare-btn {
+  background-color: #007bff;
+  border: none;
+  color: white;
+  padding: 10px 20px;
+  margin: 10px 0;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+.compare-btn:hover {
+  background-color: #0056b3;
+}
+
+.comparison-wrapper {
+  display: flex;
+  gap: 20px;
+  margin-top: 20px;
+  flex-wrap: wrap;
+}
+
+.docx-section {
+  flex: 1 1 45%;
+  min-width: 300px;
+  max-width: 100%;
+}
+
+.docx-wrapper {
+  border: 1px solid #ddd;
+  padding: 10px;
+  min-height: 200px;
+  background: #fff;
+  text-align: left;
+  overflow-x: auto;
+}
+
+/* Mobile responsive */
+@media (max-width: 768px) {
+  .comparison-wrapper {
+    flex-direction: column;
+  }
+
+  .docx-section {
+    flex: 1 1 100%;
+  }
+}

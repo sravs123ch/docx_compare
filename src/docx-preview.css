@@ -1,0 +1,9 @@
+
+.docx-wrapper {
+    border: 1px solid #ccc;
+    padding: 10px;
+    max-height: 80vh;
+    overflow: auto;
+    background: #fff;
+  }
+  
