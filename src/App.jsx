@@ -299,7 +299,7 @@ import mammoth from "mammoth";
 import { diffWords } from "diff";
 import "./docx-preview.css";
 import "./highlight.css";
-import "./app.css"; 
+import "./App.css"; 
 
 function App() {
   const containerLeft = useRef(null);
