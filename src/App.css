@@ -165,12 +165,15 @@ body {
 
 .docx-preview {
   margin-top: 20px;
-  max-height: 300px;
+  max-height: 400px;
   overflow-y: auto;
+  overflow-x: auto;
   border: 1px solid #e0e0e0;
   border-radius: 8px;
   background: white;
   padding: 15px;
+  word-wrap: break-word;
+  white-space: pre-wrap;
 }
 
 .diff-section {
@@ -195,8 +198,9 @@ body {
   font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', monospace;
   font-size: 14px;
   line-height: 1.5;
-  max-height: 600px;
+  max-height: 70vh;
   overflow-y: auto;
+  overflow-x: auto;
 }
 
 .diff-header {
@@ -251,6 +255,7 @@ body {
   white-space: pre-wrap;
   word-break: break-word;
   flex: 1;
+  min-width: 0;
 }
 
 .diff-line.added {
@@ -283,6 +288,27 @@ body {
 }
 
 /* Mobile Responsive */
+@media (max-width: 1024px) {
+  .file-upload-grid {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+
+  .controls {
+    flex-direction: column;
+    gap: 15px;
+    align-items: stretch;
+  }
+
+  .diff-mode-selector {
+    justify-content: center;
+  }
+
+  .action-buttons {
+    justify-content: center;
+  }
+}
+
 @media (max-width: 768px) {
   .app-container {
     padding: 15px;
@@ -292,27 +318,26 @@ body {
     font-size: 2rem;
   }
 
-  .controls {
-    flex-direction: column;
-    gap: 20px;
-    align-items: stretch;
+  .subtitle {
+    font-size: 1rem;
   }
 
-  .action-buttons {
-    justify-content: center;
+  .upload-card {
+    padding: 20px;
   }
 
-  .file-upload-grid {
-    grid-template-columns: 1fr;
-    gap: 20px;
+  .upload-card h3 {
+    font-size: 1.1rem;
   }
 
-  .diff-mode-selector {
-    justify-content: center;
+  .docx-preview {
+    max-height: 250px;
+    padding: 10px;
   }
 
   .git-diff-container {
     font-size: 12px;
+    max-height: 60vh;
   }
 
   .line-number {
@@ -323,12 +348,61 @@ body {
   .line-content {
     padding: 2px 10px 2px 5px;
   }
+
+  .compare-btn, .reset-btn {
+    padding: 10px 20px;
+    font-size: 14px;
+  }
+
+  .diff-mode-selector {
+    flex-direction: column;
+    gap: 10px;
+    align-items: center;
+  }
+}
+
+@media (max-width: 480px) {
+  .app-container {
+    padding: 10px;
+  }
+
+  .header h1 {
+    font-size: 1.8rem;
+  }
+
+  .controls {
+    padding: 15px;
+  }
+
+  .upload-card {
+    padding: 15px;
+  }
+
+  .docx-preview {
+    max-height: 200px;
+    padding: 8px;
+  }
+
+  .git-diff-container {
+    font-size: 11px;
+    max-height: 50vh;
+  }
+
+  .action-buttons {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .compare-btn, .reset-btn {
+    width: 100%;
+  }
 }
 
 /* Scrollbar Styling */
 .git-diff-container::-webkit-scrollbar,
 .docx-preview::-webkit-scrollbar {
   width: 8px;
+  height: 8px;
 }
 
 .git-diff-container::-webkit-scrollbar-track,
@@ -346,4 +420,23 @@ body {
 .git-diff-container::-webkit-scrollbar-thumb:hover,
 .docx-preview::-webkit-scrollbar-thumb:hover {
   background: #a8a8a8;
+}
+
+/* Horizontal scrollbar styling */
+.git-diff-container::-webkit-scrollbar-corner,
+.docx-preview::-webkit-scrollbar-corner {
+  background: #f1f1f1;
+}
+
+/* Better text wrapping for long content */
+.upload-card .file-info {
+  word-break: break-all;
+}
+
+.file-name {
+  display: block;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  max-width: 100%;
 }
