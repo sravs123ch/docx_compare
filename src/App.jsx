@@ -8,12 +8,12 @@ import "./App.css";
 function App() {
   const containerLeft = useRef(null);
   const containerRight = useRef(null);
-  const diffContainer = useRef(null);
 
   const [texts, setTexts] = useState({ left: "", right: "" });
   const [fileNames, setFileNames] = useState({ left: "", right: "" });
   const [showDiff, setShowDiff] = useState(false);
   const [diffMode, setDiffMode] = useState("lines"); // "lines" or "words"
+  const [renderedDiffHtml, setRenderedDiffHtml] = useState("");
 
   const handleFileUpload = async (e, side) => {
     const file = e.target.files[0];
@@ -85,7 +85,7 @@ function App() {
 
     diffHtml += '</div>';
     
-    diffContainer.current.innerHTML = diffHtml;
+    setRenderedDiffHtml(diffHtml);
     setShowDiff(true);
   };
 
@@ -93,9 +93,9 @@ function App() {
     setShowDiff(false);
     setTexts({ left: "", right: "" });
     setFileNames({ left: "", right: "" });
+    setRenderedDiffHtml("");
     if (containerLeft.current) containerLeft.current.innerHTML = "";
     if (containerRight.current) containerRight.current.innerHTML = "";
-    if (diffContainer.current) diffContainer.current.innerHTML = "";
   };
 
   return (
@@ -186,7 +186,10 @@ function App() {
               Comparing: <strong>{fileNames.left}</strong> vs <strong>{fileNames.right}</strong>
             </span>
           </div>
-          <div ref={diffContainer} className="git-diff-container"></div>
+          <div 
+            className="git-diff-container"
+            dangerouslySetInnerHTML={{ __html: renderedDiffHtml }}
+          ></div>
         </div>
       )}
     </div>
